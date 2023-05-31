@@ -98,7 +98,6 @@ public function __toString(){
       "\nanioFabric: " . $this->getAnioFabric().
       "\nDescripcion:" . $this->getDescripcion().
       "\nPorcIncrementoAnual: " . $this->getPorcIncrementoAnual().
-      "\nPrecio Venta: " . $this->darPrecioVenta() .
       "\n Activo: " . ($this->getActivo()? "SI" : "NO");
 }
 
