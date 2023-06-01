@@ -137,8 +137,8 @@ class Concesionaria {
         $retorno = 0;
         
         if($objCliente->getIsActivo()){
-            //Hardcodeo la fecha pq no veo necesario usar la clase DateTime.
-            $venta = new Venta("21/4/2023",$objCliente,$vehiculosAVender);
+            
+            $venta = new Venta(date("d/m/Y"),$objCliente,$vehiculosAVender);
 
         //Recorro la coleccion de codigos y agrego a la venta los vehiculos que coincidan con el codigo.
             for($i=0;$i<count($colCodigosVehiculos);$i++){
