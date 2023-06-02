@@ -109,4 +109,64 @@ class Venta {
     }
 
 
+    //SEGUNDO PARCIAL DESDE AQUÍ----------------------------------------------
+
+
+    /**
+     * Esta funcion retorna el precio final de la sumatoria de los vehiculos de fabricacion nacional. 
+     * Si no hay vehiculos o no hay vehiculos nacionales retorna 0.
+     * @return float
+     */
+    public function retornarTotalVentaNacional()
+    {
+
+        $precioFinalNacionales = 0;
+        //Recorro la coleccion de vehiculos y voy sumando los precios de venta de los vehiculos que sean nacionales.-
+        $arrVehiculos = $this->getVehiculos();
+        $cantidadVehiculos = count($arrVehiculos);
+        //Verifico que existan vehiculos en la venta.
+        if($cantidadVehiculos>0){
+            for($i=0;$i<$cantidadVehiculos;$i++){
+                if($arrVehiculos[$i] instanceof VehiculoNacional){
+                    $precioFinalNacionales += $arrVehiculos[$i]->darPrecioVenta();
+                }
+            }
+        }
+        
+        return $precioFinalNacionales;
+    }
+
+
+
+    /**
+     * Retorna una coleccion de vehiculos que sean importados asociados a esta venta. En caso de no
+     * haber vehiculos importados retorna un arreglo vacío.
+     * @return array
+     */
+    public function retornarVehiculoImportado()
+    {
+        
+        $colVehiculosImp = [];
+        $vehiculos = $this->getVehiculos();
+        $cantVehiculos = count($vehiculos);
+
+        //Si poseo vehiculos en la venta ingreso al if.
+        if($cantVehiculos>0){
+            //Recorro colección de vehiculos.- Si el vehiculo es importado lo agrego a la coleccion de vehiculos importados.
+            for($i=0;$i<$cantVehiculos;$i++){
+                if($vehiculos[$i] instanceof VehiculoImportado){
+                    array_push($colVehiculosImp,$vehiculos[$i]);
+                }
+            }
+        }
+        return $colVehiculosImp;
+        
+    }
+
+
+
+
+
+
+
 }

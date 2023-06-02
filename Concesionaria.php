@@ -207,4 +207,62 @@ class Concesionaria
 
         return $arrVentasCliente;
     }
+
+
+
+    //Segundo parcial desde aquí ---------------------------------------------------------------------------------------------
+
+
+    /**
+     * Implementar el método informarSumaVentasNacionales() 
+     * que recorre la colección de ventas realizadas por la empresa y 
+     * retorna el importe total de ventas Nacionales realizadas por la empresa.
+     */
+
+
+     /**
+      * Recorre la coleccion de ventas realizadas por la empresa y retorna el importe total de ventas 
+      * Nacionales realizadas por la empresa.
+      */
+    public function informarSumaVentasNacionales(){
+        $arrVentas = $this->getVentasRealizadas();
+        $suma = 0;
+        $longArrVentas = count($arrVentas);
+        if($longArrVentas>0){
+            for($i=0;$i<$longArrVentas;$i++){
+                $suma+= $arrVentas[$i]->retornarTotalVentaNacional();
+            }
+        }
+        return $suma;
+    }
+
+    /**
+     * Implementar el método informarVentasImportadas() que recorre la colección de ventas 
+     * realizadas por la empresa y retorna una colección de ventas de vehículos importados. 
+     * Si en la venta al menos uno de los vehículos es importado la venta debe ser informada.
+     */
+
+
+    /**
+     * Recorre la coleccion de ventas realizadas por la empresa y 
+     * retorna una colección de ventas de vehículos importados.
+     */
+    public function informarVentasImportadas(){
+        $arrVentas = $this->getVentasRealizadas();
+        $arrVentasImportadas = [];
+        $longArrVentas = count($arrVentas);
+
+        if($longArrVentas>0){
+            for($i=0;$i<$longArrVentas;$i++){
+                //Si el metodo retornarVehiculoImportado devuelve un arreglo con mas de 1 elemento, 
+                //añado la venta al arreglo de ventas importadas.-
+                if(count($arrVentas[$i]->retornarVehiculoImportado())>0){
+                    array_push($arrVentasImportadas,$arrVentas[$i]);
+                }
+            }
+        }
+        return $arrVentasImportadas;
+    }
+
+
 }

@@ -83,7 +83,7 @@ public function darPrecioVenta(){
     $costo = $this->getCosto();
     $cantAniosVehiculo = $anioActual - $this->getAnioFabric() ;
     if($this->getActivo()){
-        $retorno = $costo + $costo*($cantAniosVehiculo*$this->getPorcIncrementoAnual());
+        $retorno = $costo + $costo*($cantAniosVehiculo*($this->getPorcIncrementoAnual()));
     }
     return $retorno;
 }
